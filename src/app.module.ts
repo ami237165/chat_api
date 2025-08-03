@@ -6,18 +6,19 @@ import { User } from './users/users.entity';
 import { PassportModule } from '@nestjs/passport';
 import { AuthModule } from './auth/auth.module';
 import { RegisterationModule } from './registration/registration.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root', // Your MySQL username
-      password: '%48@SANPADAa', // Your MySQL password
-      database: 'mychatapp', // Your database name
-      entities: [User],
-      synchronize: true, // Auto-create tables (for development only)
+       host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT || '3306'),
+        username: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_NAME,
+        entities: [User],
     }),
     PassportModule.register({defaultStrategy: 'jwt'}),
     EventsModule,UsersModule,AuthModule,RegisterationModule

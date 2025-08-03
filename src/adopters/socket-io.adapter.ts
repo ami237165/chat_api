@@ -6,7 +6,7 @@ import { ServerOptions } from 'socket.io';
 export class SocketIoAdapter extends IoAdapter {
   createIOServer(port: number, options?: ServerOptions): any {
 const cors = {
-      origin: 'https://192.168.2.110:3000/', // replace with frontend origin in prod
+      origin: process.env.CLIENT_URL, // replace with frontend origin in prod
       methods: ['GET', 'POST'],
       credentials: true,
     };

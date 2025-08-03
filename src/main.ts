@@ -12,7 +12,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule,{httpsOptions});
   app.enableCors({
     origin:['https://chatme-chi-gray.vercel.app'],  // Allow all origins (for development only)
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
   });
   app.useWebSocketAdapter(new SocketIoAdapter(app));

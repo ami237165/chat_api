@@ -24,10 +24,8 @@ export class UsersController {
 
   //findall user
   @UseGuards(AuthGuard)
-  @Get('findAll')
-  async findAll(@Request() req) { 
-    console.log(req.user);
-       
+  @Post('findAll')
+  async findAll(@Request() req) {        
     return await this.usersService.fineAll()
   }
 }

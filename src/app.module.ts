@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/users.entity';
 import { PassportModule } from '@nestjs/passport';
 import { AuthModule } from './auth/auth.module';
+import { RegisterationModule } from './registration/registration.module';
 
 @Module({
   imports: [
@@ -14,12 +15,12 @@ import { AuthModule } from './auth/auth.module';
       port: 3306,
       username: 'root', // Your MySQL username
       password: '%48@SANPADAa', // Your MySQL password
-      database: 'chat_app', // Your database name
+      database: 'mychatapp', // Your database name
       entities: [User],
       synchronize: true, // Auto-create tables (for development only)
     }),
     PassportModule.register({defaultStrategy: 'jwt'}),
-    EventsModule,UsersModule,AuthModule
+    EventsModule,UsersModule,AuthModule,RegisterationModule
   ],
   controllers: [],
   providers: [],

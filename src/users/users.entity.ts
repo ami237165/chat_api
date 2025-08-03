@@ -1,13 +1,19 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('user')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({unique:true,nullable:false})
   mobileNumber: string;
 
-  @Column()
+  @Column({nullable:false})
   password: string; // For now, plain text (we'll hash it later)
+
+  @Column({nullable:false})
+  name: string;
+
+  @Column({nullable:false})
+  email:string
 }

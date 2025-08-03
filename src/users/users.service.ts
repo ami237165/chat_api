@@ -32,8 +32,8 @@ export class UsersService {
 
     // find all users
     async fineAll(): Promise<any> {
-        return await this.userRepository.find().then((res) => {
-             if (res) {
+        return await this.userRepository.find({cache:false}).then((res) => {
+             if (res) {                
                  return res
              } else {
                  return "user not found"

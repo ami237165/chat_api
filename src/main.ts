@@ -14,7 +14,8 @@ async function bootstrap() {
     origin: '*', // Allow all origins (for development only)
   });
   app.useWebSocketAdapter(new SocketIoAdapter(app));
-  await app.listen(5000);
+  const port = process.env.PORT || 5000;
+await app.listen(port, '0.0.0.0');
   console.log(await app.getUrl());
   
 }
